@@ -19,16 +19,28 @@ PushButton::~PushButton() {
 void PushButton::init(int buttPin) {
     buttPin = buttPin;
     pinMode(buttPin, INPUT_PULLUP);
+    currState = digitalRead(buttPin);
 }
 
 void PushButton::begin() {
-    currState = digitalRead(buttPin);
     lastState = currState;
+    currState = digitalRead(buttPin);
 }
 
 bool isClick() {
-    unsigned long PrsTime, RlsTime;
-    if (){
-        add something
+    unsigned long PrsTime = 0;
+    unsigned long RlsTime = 0;
+    if ( lastState == HIGH && currState == LOW ){
+        PrsTime = millis();
     }
+    if ( lastState == LOW && currState == HIGH ){
+        RlsTime = millis();
+    }
+    if ((RlsTime - PrsTime) > dDelay){
+        return 1;
+    }
+}
+
+void delayUpdate(long delay){
+    dDelay = delay;
 }

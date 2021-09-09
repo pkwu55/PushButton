@@ -23,7 +23,7 @@ class PushButton
         int buttPin;  // Pin number where button connects
         int currState;  // Current state of the button
         int lastState;  // Last state of the button
-        long delay = 50; // control the debounce time
+        long dDelay = 50; // control the debounce time
 
     public:
         void init(int buttPin);  // initialize pin for pullup mode
